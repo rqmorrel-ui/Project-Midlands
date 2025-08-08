@@ -100,10 +100,10 @@
                             
                             <div class="data-upload-area">
                                 <div class="upload-tabs">
-                                    <button class="tab-button active" onclick="showUploadTab('csv')">CSV Upload</button>
-                                    <button class="tab-button" onclick="showUploadTab('locationQuery')">Location Query</button>
-                                    <button class="tab-button" onclick="showUploadTab('google')">Google Sheets</button>
-                                    <button class="tab-button" onclick="showUploadTab('manual')">Manual Entry</button>
+                                                    <button class="tab-button active" onclick="showUploadTab('csv', event)">CSV Upload</button>
+                <button class="tab-button" onclick="showUploadTab('locationQuery', event)">Location Query</button>
+                <button class="tab-button" onclick="showUploadTab('google', event)">Google Sheets</button>
+                <button class="tab-button" onclick="showUploadTab('manual', event)">Manual Entry</button>
                                 </div>
                                 
                                 <div class="upload-content active" id="csvUpload">
@@ -115,15 +115,15 @@
                                         <div class="question-step active" id="officeLevelStep">
                                             <h5>What office are you running for?</h5>
                                             <div class="option-buttons">
-                                                <button class="option-btn" onclick="selectOfficeLevel('federal')">
+                                                <button class="option-btn" onclick="selectOfficeLevel('federal', event)">
                                                     <i class="fas fa-flag"></i>
                                                     <span>Federal</span>
                                                 </button>
-                                                <button class="option-btn" onclick="selectOfficeLevel('state')">
+                                                <button class="option-btn" onclick="selectOfficeLevel('state', event)">
                                                     <i class="fas fa-map"></i>
                                                     <span>State</span>
                                                 </button>
-                                                <button class="option-btn" onclick="selectOfficeLevel('local')">
+                                                <button class="option-btn" onclick="selectOfficeLevel('local', event)">
                                                     <i class="fas fa-city"></i>
                                                     <span>Local</span>
                                                 </button>
@@ -297,12 +297,12 @@
                             
                             <div class="voice-setup">
                                 <div class="voice-options">
-                                    <div class="voice-option active" onclick="selectVoiceType('custom')">
+                                    <div class="voice-option active" onclick="selectVoiceType('custom', event)">
                                         <i class="fas fa-microphone"></i>
                                         <h4>VoiceMatch Engine™</h4>
                                         <p>Upload 3–5 videos to train AI on your authentic tone, cadence, and phrasing.</p>
                                     </div>
-                                    <div class="voice-option" onclick="selectVoiceType('standard')">
+                                    <div class="voice-option" onclick="selectVoiceType('standard', event)">
                                         <i class="fas fa-shield-alt"></i>
                                         <h4>VoiceShield AI™</h4>
                                         <p>Use professional messaging aligned with your brand's voice for consistency and protection.</p>
