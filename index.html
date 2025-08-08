@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+               <title>H.O.P.E. Toolkit 2.0™ - Campaign Intelligence Platform</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                                       <div class="logo">
+                           <div class="logo-icon">
+                               <div class="microphone-icon">
+                                   <i class="fas fa-microphone"></i>
+                               </div>
+                               <div class="circuit-lines">
+                                   <div class="line"></div>
+                                   <div class="line"></div>
+                                   <div class="line"></div>
+                               </div>
+                           </div>
+                           <div class="logo-text">
+                               <span class="hope">H.O.P.E.</span>
+                               <span class="toolkit">TOOLKIT 2.0</span>
+                               <span class="powered-by">Powered by Project Midlands</span>
+                           </div>
+                       </div>
+                <div class="header-actions">
+                    <div class="ai-status">
+                        <i class="fas fa-brain"></i>
+                        <span>AI Learning Active</span>
+                    </div>
+                    <a href="https://projectmidlands.com" class="back-link">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Project Midlands
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                                       <h1 class="hero-title">Campaign Intelligence Platform</h1>
+                       <p class="hero-subtitle">Harnessing Our Power Effectively</p>
+                <p class="hero-subtitle">The future of political campaigns. One platform. Infinite possibilities.</p>
+                <div class="hero-features">
+                    <div class="feature-badge">
+                        <i class="fas fa-robot"></i>
+                        AI-Powered Intelligence
+                    </div>
+                    <div class="feature-badge">
+                        <i class="fas fa-brain"></i>
+                        Predictive Analytics
+                    </div>
+                    <div class="feature-badge">
+                        <i class="fas fa-magic"></i>
+                        Voice Matching
+                    </div>
+                    <div class="feature-badge">
+                        <i class="fas fa-shield-alt"></i>
+                        Zero Hallucination
+                    </div>
+                </div>
+                <div class="beta-badge">
+                    <i class="fas fa-flask"></i>
+                    Beta Access - Ends January 31, 2026
+                </div>
+            </section>
+
+            <!-- Campaign Setup -->
+            <section class="campaign-setup" id="campaignSetup">
+                <div class="setup-container">
+                    <h2 class="section-title">Campaign Intelligence Setup</h2>
+                    <p class="setup-subtitle">One-time setup. Infinite intelligence.</p>
+                    
+                    <div class="setup-steps">
+                        <!-- Step 1: Campaign Data -->
+                        <div class="setup-step active" id="step1">
+                            <div class="step-header">
+                                <div class="step-number">1</div>
+                                <h3>Campaign Data Upload</h3>
+                            </div>
+                            <p>Upload your campaign's strategic data to power the AI intelligence engine.</p>
+                            
+                            <div class="data-upload-area">
+                                <div class="upload-tabs">
+                                    <button class="tab-button active" onclick="showUploadTab('csv')">CSV Upload</button>
+                                    <button class="tab-button" onclick="showUploadTab('locationQuery')">Location Query</button>
+                                    <button class="tab-button" onclick="showUploadTab('google')">Google Sheets</button>
+                                    <button class="tab-button" onclick="showUploadTab('manual')">Manual Entry</button>
+                                </div>
+                                
+                                <div class="upload-content active" id="csvUpload">
+                                    <div class="campaign-questionnaire">
+                                        <h4>Campaign Profile Builder</h4>
+                                        <p>Let's build your campaign profile step by step to generate strategic intelligence.</p>
+                                        
+                                        <!-- Step 1: Office Level -->
+                                        <div class="question-step active" id="officeLevelStep">
+                                            <h5>What office are you running for?</h5>
+                                            <div class="option-buttons">
+                                                <button class="option-btn" onclick="selectOfficeLevel('federal')">
+                                                    <i class="fas fa-flag"></i>
+                                                    <span>Federal</span>
+                                                </button>
+                                                <button class="option-btn" onclick="selectOfficeLevel('state')">
+                                                    <i class="fas fa-map"></i>
+                                                    <span>State</span>
+                                                </button>
+                                                <button class="option-btn" onclick="selectOfficeLevel('local')">
+                                                    <i class="fas fa-city"></i>
+                                                    <span>Local</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Step 2: State Selection -->
+                                        <div class="question-step" id="stateStep" style="display: none;">
+                                            <h5>Select your state:</h5>
+                                            <div class="state-selector">
+                                                <select id="stateSelect">
+                                                    <option value="">Choose your state...</option>
+                                                </select>
+                                                <button class="next-step-btn" onclick="proceedToOfficeType()">
+                                                    <i class="fas fa-arrow-right"></i>
+                                                    Continue
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Step 3: Office Type -->
+                                        <div class="question-step" id="officeTypeStep" style="display: none;">
+                                            <h5>Select your specific office:</h5>
+                                            <div class="option-buttons" id="officeTypeOptions">
+                                                <!-- Options will be populated based on office level -->
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Step 4: District Selection -->
+                                        <div class="question-step" id="districtStep" style="display: none;">
+                                            <h5>Select your district:</h5>
+                                            <div class="district-selector">
+                                                <select id="districtSelect">
+                                                    <option value="">Choose your district...</option>
+                                                </select>
+                                                <button class="next-step-btn" onclick="proceedToInsightsSection()">
+                                                    <i class="fas fa-arrow-right"></i>
+                                                    Continue to Insights
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- Step 5: Campaign Insights -->
+                                        <div class="question-step" id="insightsStep" style="display: none;">
+                                            <h5>Campaign Context & Insights</h5>
+                                            <p>Help us understand your campaign context for more targeted recommendations.</p>
+                                            
+                                            <div class="insights-form">
+                                                <div class="form-group">
+                                                    <label for="currentStatus">Are you currently in office or part of an organization?</label>
+                                                    <select id="currentStatus" onchange="toggleStatusDetails()">
+                                                        <option value="">Select your status...</option>
+                                                        <option value="incumbent">Currently in office (Incumbent)</option>
+                                                        <option value="challenger">Challenger to incumbent</option>
+                                                        <option value="open_seat">Running for open seat</option>
+                                                        <option value="organization">Part of an organization</option>
+                                                        <option value="first_time">First-time candidate</option>
+                                                    </select>
+                                                </div>
+                                                
+                                                <div class="form-group" id="organizationDetails" style="display: none;">
+                                                    <label for="organizationName">Organization Name:</label>
+                                                    <input type="text" id="organizationName" placeholder="e.g., Local NAACP, Chamber of Commerce">
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label for="currentIssues">What are the top 3 issues affecting your district right now?</label>
+                                                    <textarea id="currentIssues" placeholder="e.g., AI project concerns in Tennessee, lack of notification to residents, economic development"></textarea>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label for="communicationStrategy">What communication strategy has worked best for you?</label>
+                                                    <textarea id="communicationStrategy" placeholder="e.g., Door-to-door canvassing, social media, local radio, community meetings"></textarea>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label for="bestHook">What messaging hook resonates most with your voters?</label>
+                                                    <textarea id="bestHook" placeholder="e.g., Family values, economic opportunity, community safety, transparency"></textarea>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label for="voterEngagement">How do you currently engage with voters?</label>
+                                                    <textarea id="voterEngagement" placeholder="e.g., Town halls, social media, phone banking, community events"></textarea>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label for="additionalInsights">Additional insights or context (Optional):</label>
+                                                    <textarea id="additionalInsights" placeholder="Any other information that would help us provide more targeted recommendations..."></textarea>
+                                                </div>
+                                                
+                                                <button class="next-step-btn" onclick="proceedToDataGeneration()">
+                                                    <i class="fas fa-brain"></i>
+                                                    Generate Campaign Intelligence
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="upload-content" id="locationQueryUpload">
+                                    <div class="location-query-area">
+                                        <h4>Location-Based Query</h4>
+                                        <p>Enter a location to get strategic intelligence and communications for that area.</p>
+                                        
+                                        <div class="location-input-group">
+                                            <div class="input-row">
+                                                <div class="form-group">
+                                                    <label for="queryLocation">Location (ZIP Code, County, or District):</label>
+                                                    <input type="text" id="queryLocation" placeholder="e.g., 29150, Sumter County, SC-01">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="queryType">Query Type:</label>
+                                                    <select id="queryType">
+                                                        <option value="strategy">Strategic Intelligence</option>
+                                                        <option value="communications">Communications</option>
+                                                        <option value="voter">Voter Analysis</option>
+                                                        <option value="fundraising">Fundraising Strategy</option>
+                                                        <option value="all">All of the Above</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            
+                                            <button class="query-button" onclick="processLocationQuery()">
+                                                <i class="fas fa-search"></i>
+                                                Generate Intelligence for Location
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="upload-content" id="googleUpload">
+                                    <div class="google-sheets-integration">
+                                        <p>Connect your Google Sheets for real-time data sync</p>
+                                        <button class="google-connect">
+                                            <i class="fab fa-google"></i>
+                                            Connect Google Sheets
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="upload-content" id="manualUpload">
+                                    <div class="manual-entry-form">
+                                        <div class="form-group">
+                                            <label>Campaign Name:</label>
+                                            <input type="text" id="campaignName" placeholder="e.g., Johnson for Congress">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Target District:</label>
+                                            <input type="text" id="targetDistrict" placeholder="e.g., SC-01">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Primary Issues:</label>
+                                            <textarea id="primaryIssues" placeholder="Healthcare, Jobs, Education"></textarea>
+                                        </div>
+                                        <button class="save-manual" onclick="saveManualData()">
+                                            <i class="fas fa-save"></i>
+                                            Save Campaign Data
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2: VoiceCraft™ System -->
+                        <div class="setup-step" id="step2">
+                            <div class="step-header">
+                                <div class="step-number">2</div>
+                                <h3>SECTION 2: VoiceCraft™ System</h3>
+                            </div>
+                            <p>Bring your message to life with AI-powered communication that sounds like you. Every platform. Every time.</p>
+                            
+                            <div class="voice-setup">
+                                <div class="voice-options">
+                                    <div class="voice-option active" onclick="selectVoiceType('custom')">
+                                        <i class="fas fa-microphone"></i>
+                                        <h4>VoiceMatch Engine™</h4>
+                                        <p>Upload 3–5 videos to train AI on your authentic tone, cadence, and phrasing.</p>
+                                    </div>
+                                    <div class="voice-option" onclick="selectVoiceType('standard')">
+                                        <i class="fas fa-shield-alt"></i>
+                                        <h4>VoiceShield AI™</h4>
+                                        <p>Use professional messaging aligned with your brand's voice for consistency and protection.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="voice-inputs" id="customVoiceInputs">
+                                    <div class="video-upload-area">
+                                        <h4>Train Your Voice</h4>
+                                        <p>Upload 3–5 video clips showing your natural communication style—speeches, interviews, or campaign updates. These clips power the VoiceCraft™ System to personalize SMS, email, donation asks, and more.</p>
+                                        
+                                        <div class="voice-preview-block">
+                                            <p><em>"This isn't just personalization—it's protection. Your voice. Your values. Digitally enforced."</em></p>
+                                        </div>
+                                        
+                                        <div class="video-inputs">
+                                            <div class="video-input">
+                                                <label>Video URL 1 (Speech/Interview):</label>
+                                                <input type="url" placeholder="https://youtube.com/..." class="video-url">
+                                            </div>
+                                            <div class="video-input">
+                                                <label>Video URL 2 (Casual/Conversation):</label>
+                                                <input type="url" placeholder="https://tiktok.com/..." class="video-url">
+                                            </div>
+                                            <div class="video-input">
+                                                <label>Video URL 3 (Policy Discussion):</label>
+                                                <input type="url" placeholder="https://facebook.com/..." class="video-url">
+                                            </div>
+                                            <div class="video-input">
+                                                <label>ZIP Code for Local Tone Detection (Optional):</label>
+                                                <input type="text" id="zipCodeForTone" placeholder="e.g., 29401" maxlength="5">
+                                                <small>AI will automatically detect the best tone for your community</small>
+                                            </div>
+                                        </div>
+                                        
+                                        <button class="analyze-voice" onclick="analyzeVoiceProfile()">
+                                            <i class="fas fa-brain"></i>
+                                            Train VoiceCraft™ System
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="voice-inputs" id="standardVoiceInputs" style="display: none;">
+                                    <div class="standard-voice-setup">
+                                        <h4>VoiceShield AI™ Setup</h4>
+                                        <p>Select your preferred communication style:</p>
+                                        
+                                        <div class="voice-style-options">
+                                            <label class="voice-style">
+                                                <input type="radio" name="voiceStyle" value="grassroots">
+                                                <div class="style-content">
+                                                    <h5>Grassroots Organizer</h5>
+                                                    <p>Authentic, community-focused, personal stories</p>
+                                                </div>
+                                            </label>
+                                            <label class="voice-style">
+                                                <input type="radio" name="voiceStyle" value="policy">
+                                                <div class="style-content">
+                                                    <h5>Policy Expert</h5>
+                                                    <p>Data-driven, solution-oriented, professional</p>
+                                                </div>
+                                            </label>
+                                            <label class="voice-style">
+                                                <input type="radio" name="voiceStyle" value="fighter">
+                                                <div class="style-content">
+                                                    <h5>Principled Fighter</h5>
+                                                    <p>Passionate, bold, justice-focused</p>
+                                                </div>
+                                            </label>
+                                        </div>
+                                        
+                                        <button class="save-voice-style" onclick="saveStandardVoice()">
+                                            <i class="fas fa-shield-alt"></i>
+                                            Activate VoiceShield AI™
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 2.5: Communication Options (After Voice Analysis) -->
+                        <div class="setup-step" id="step2_5" style="display: none;">
+                            <div class="step-header">
+                                <div class="step-number">2.5</div>
+                                <h3>Communication Options</h3>
+                            </div>
+                            <p>Your voice profile is ready! Choose what you'd like to generate:</p>
+                            
+                            <!-- Tone Detection Display -->
+                            <div id="detectedToneDisplay"></div>
+                            
+                            <div class="communication-options">
+                                <div class="option-grid">
+                                    <button class="option-card" onclick="quickGenerate('email')">
+                                        <i class="fas fa-envelope"></i>
+                                        <h4>Email Campaign</h4>
+                                        <p>Generate personalized emails in your voice</p>
+                                    </button>
+                                    <button class="option-card" onclick="quickGenerate('sms')">
+                                        <i class="fas fa-mobile-alt"></i>
+                                        <h4>SMS Messages</h4>
+                                        <p>Create text messages in your authentic voice</p>
+                                    </button>
+                                    <button class="option-card" onclick="quickGenerate('social')">
+                                        <i class="fas fa-share-alt"></i>
+                                        <h4>Social Media</h4>
+                                        <p>Generate posts for all social platforms</p>
+                                    </button>
+                                    <button class="option-card" onclick="quickGenerate('fundraising')">
+                                        <i class="fas fa-dollar-sign"></i>
+                                        <h4>Donation Appeals</h4>
+                                        <p>Create fundraising messages in your voice</p>
+                                    </button>
+                                    <button class="option-card" onclick="quickGenerate('flyer')">
+                                        <i class="fas fa-file-alt"></i>
+                                        <h4>Flyers & Materials</h4>
+                                        <p>Generate campaign materials</p>
+                                    </button>
+                                    <button class="option-card" onclick="quickGenerate('all')">
+                                        <i class="fas fa-magic"></i>
+                                        <h4>All Communications</h4>
+                                        <p>Generate everything at once</p>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Intelligence Activation -->
+                        <div class="setup-step" id="step3">
+                            <div class="step-header">
+                                <div class="step-number">3</div>
+                                <h3>Intelligence Activation</h3>
+                            </div>
+                            <p>Your Campaign Intelligence Platform is ready to launch.</p>
+                            
+                            <div class="intelligence-summary">
+                                <div class="summary-card">
+                                    <i class="fas fa-database"></i>
+                                    <h4>Data Processed</h4>
+                                    <p id="dataSummary">Ready to analyze</p>
+                                </div>
+                                <div class="summary-card">
+                                    <i class="fas fa-microphone"></i>
+                                    <h4>Voice Profile</h4>
+                                    <p id="voiceSummary">Ready to generate</p>
+                                </div>
+                                <div class="summary-card">
+                                    <i class="fas fa-brain"></i>
+                                    <h4>AI Intelligence</h4>
+                                    <p>Learning and adapting</p>
+                                </div>
+                            </div>
+                            
+                            <button class="activate-intelligence" onclick="activateIntelligence()">
+                                <i class="fas fa-rocket"></i>
+                                Launch Campaign Intelligence
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Campaign Intelligence Dashboard -->
+            <section class="intelligence-dashboard" id="intelligenceDashboard" style="display: none;">
+                <div class="dashboard-header">
+                    <h2>Campaign Intelligence Dashboard</h2>
+                    <div class="dashboard-stats">
+                        <div class="stat">
+                            <i class="fas fa-users"></i>
+                            <span id="voterCount">0</span>
+                            <label>Voters Analyzed</label>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-bullhorn"></i>
+                            <span id="messageCount">0</span>
+                            <label>Messages Generated</label>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-chart-line"></i>
+                            <span id="efficiencyScore">0%</span>
+                            <label>Efficiency Score</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions">
+                    <h3>Quick Actions</h3>
+                    <div class="action-grid">
+                        <button class="action-card" onclick="openIntelligenceTool('strategy')">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Strategic Intelligence</h4>
+                            <p>Get comprehensive campaign strategy for any location</p>
+                        </button>
+                        <button class="action-card" onclick="openIntelligenceTool('communications')">
+                            <i class="fas fa-bullhorn"></i>
+                            <h4>Communication Factory</h4>
+                            <p>Generate all communications in your authentic voice</p>
+                        </button>
+                        <button class="action-card" onclick="openIntelligenceTool('voter')">
+                            <i class="fas fa-users"></i>
+                            <h4>Voter Intelligence</h4>
+                            <p>Deep voter analysis and targeting insights</p>
+                        </button>
+                        <button class="action-card" onclick="openIntelligenceTool('fundraising')">
+                            <i class="fas fa-dollar-sign"></i>
+                            <h4>Fundraising Engine</h4>
+                            <p>Optimized donation strategies and appeals</p>
+                        </button>
+                        <button class="action-card" onclick="openIntelligenceTool('outreach')">
+                            <i class="fas fa-hands-helping"></i>
+                            <h4>Community Outreach</h4>
+                            <p>Cultural outreach and engagement strategies</p>
+                        </button>
+                        <button class="action-card" onclick="openIntelligenceTool('response')">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>Response System</h4>
+                            <p>Real-time response and engagement management</p>
+                        </button>
+                        <button class="action-card" onclick="openIntelligenceTool('rapid')">
+                            <i class="fas fa-shield-alt"></i>
+                            <h4>EchoShield™ Response Engine</h4>
+                            <p>Your digital firewall against misinformation, smear attacks, and viral disinfo</p>
+                        </button>
+                        <button class="action-card" onclick="openIntelligenceTool('incumbent')">
+                            <i class="fas fa-user-tie"></i>
+                            <h4>Incumbent Engagement</h4>
+                            <p>Strategic messaging and donation strategies for current office holders</p>
+                        </button>
+                        <button class="action-card" onclick="openIntelligenceTool('organization')">
+                            <i class="fas fa-building"></i>
+                            <h4>Organization Strategy</h4>
+                            <p>Outreach and partnership strategies for organizations and advocacy groups</p>
+                        </button>
+                        <button class="action-card" onclick="displayAnalyticsDashboard()">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Analytics Dashboard</h4>
+                            <p>View detailed metrics and usage analytics for your campaign</p>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Predictive Insights -->
+                <div class="predictive-insights">
+                    <h3>AI Predictive Insights</h3>
+                    <div class="insights-grid" id="predictiveInsights">
+                        <!-- AI-generated insights will appear here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Intelligence Tools Interface -->
+            <section class="intelligence-tools" id="intelligenceTools" style="display: none;">
+                <div class="tools-header">
+                    <button class="back-to-dashboard" onclick="showDashboard()">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to Dashboard
+                    </button>
+                    <h2 class="tool-title" id="toolTitle">Intelligence Tool</h2>
+                </div>
+
+                <!-- Strategic Intelligence Tool -->
+                <div class="tool-interface" id="strategyTool" style="display: none;">
+                    <div class="tool-description">
+                        <h3>Strategic Intelligence</h3>
+                        <p>Get comprehensive campaign strategy combining voter data, outreach insights, and fundraising intelligence.</p>
+                    </div>
+                    
+                    <div class="location-selector">
+                        <label for="strategyLocation">Select Location:</label>
+                        <select id="strategyLocation">
+                            <option value="">Choose a location...</option>
+                        </select>
+                        <button class="get-strategy" onclick="generateStrategicIntelligence()">
+                            <i class="fas fa-brain"></i>
+                            Generate Intelligence
+                        </button>
+                    </div>
+                    
+                    <div class="strategy-results" id="strategyResults">
+                        <!-- Results will appear here -->
+                    </div>
+                </div>
+
+                <!-- Communication Factory Tool -->
+                <div class="tool-interface" id="communicationsTool" style="display: none;">
+                    <div class="tool-description">
+                        <h3>Communication Factory</h3>
+                        <p>Generate all communications in your authentic voice across all platforms.</p>
+                        <div class="ai-config-section">
+                            <button class="ai-config-btn" onclick="configureAI()">
+                                <i class="fas fa-cog"></i>
+                                Configure AI Integration
+                            </button>
+                            <small id="aiStatus">AI: Disabled (using templates)</small>
+                        </div>
+                    </div>
+                    
+                    <!-- AI Tone Display -->
+                    <div id="aiToneDisplay" class="ai-tone-display" style="display: none;">
+                        <div class="ai-tone-info">
+                            <i class="fas fa-brain"></i>
+                            <span>AI-Detected Tone: <strong id="detectedToneText">hopeful</strong></span>
+                        </div>
+                    </div>
+                    
+                    <div class="communication-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="commGoal">Goal:</label>
+                                <select id="commGoal" required>
+                                    <option value="">Select goal...</option>
+                                    <option value="fundraising">Fundraising</option>
+                                    <option value="volunteer">Volunteer Recruitment</option>
+                                    <option value="event">Event RSVP</option>
+                                    <option value="voter">Voter Education</option>
+                                    <option value="gotv">Get-Out-The-Vote</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="commAudience">Audience:</label>
+                                <input type="text" id="commAudience" placeholder="e.g., Past donors, unaffiliated voters">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="commLocation">Location:</label>
+                                <input type="text" id="commLocation" placeholder="ZIP code or area">
+                            </div>
+                            <div class="form-group">
+                                <label for="commTone">Tone (Optional - AI will use detected tone):</label>
+                                <select id="commTone">
+                                    <option value="">Use AI-detected tone</option>
+                                    <option value="urgent">Urgent</option>
+                                    <option value="hopeful">Hopeful</option>
+                                    <option value="energetic">Energetic</option>
+                                    <option value="respectful">Respectful</option>
+                                    <option value="authentic">Authentic</option>
+                                    <option value="determined">Determined</option>
+                                    <option value="community-focused">Community-Focused</option>
+                                    <option value="professional">Professional</option>
+                                    <option value="inspiring">Inspiring</option>
+                                    <option value="appreciative">Appreciative</option>
+                                    <option value="firm">Firm</option>
+                                    <option value="informative">Informative</option>
+                                    <option value="celebratory">Celebratory</option>
+                                </select>
+                                <small id="aiToneDisplay">AI will automatically use the optimal tone for your community</small>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="commHook">Messaging Hook (Optional):</label>
+                            <input type="text" id="commHook" placeholder="Key phrase to include">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="commCTA">Call to Action:</label>
+                            <input type="text" id="commCTA" placeholder="What do you want them to do?" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Communication Types:</label>
+                            <div class="checkbox-grid">
+                                <label><input type="checkbox" value="email" checked> Email</label>
+                                <label><input type="checkbox" value="sms" checked> SMS</label>
+                                <label><input type="checkbox" value="social" checked> Social Media</label>
+                                <label><input type="checkbox" value="flyer"> Flyer</label>
+                                <label><input type="checkbox" value="script"> Phone Script</label>
+                                <label><input type="checkbox" value="press"> Press Release</label>
+                            </div>
+                        </div>
+                        
+                        <button class="generate-communications" onclick="generateAllCommunications()">
+                            <i class="fas fa-magic"></i>
+                            Generate All Communications
+                        </button>
+                    </div>
+                    
+                    <div class="communications-results" id="communicationsResults">
+                        <!-- Results will appear here -->
+                    </div>
+                </div>
+
+                                        <!-- EchoShield™ Response Engine Tool -->
+                        <div class="tool-interface" id="rapidTool" style="display: none;">
+                            <div class="tool-description">
+                                <h3>EchoShield™ Response Engine</h3>
+                                <p>Your digital firewall against misinformation, smear attacks, and viral disinfo. EchoShield™ makes sure your truth hits back—fast, accurate, and in your own voice.</p>
+                            </div>
+                            
+                            <div class="rapid-response-form">
+                                <div class="form-group">
+                                    <label for="commentToAnalyze">Comment to Analyze:</label>
+                                    <textarea 
+                                        id="commentToAnalyze" 
+                                        placeholder="Paste the comment you want to analyze here..."
+                                        rows="4"
+                                    ></textarea>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="candidateContext">Candidate Context (Optional):</label>
+                                    <input type="text" id="candidateContext" placeholder="e.g., Jordan Herrera, progressive candidate">
+                                </div>
+                                
+                                <button class="analyze-comment" onclick="analyzeComment()">
+                                    <i class="fas fa-shield-alt"></i>
+                                    Activate EchoShield™ Response
+                                </button>
+                            </div>
+                            
+                            <div class="rapid-response-results" id="rapidResponseResults">
+                                <!-- Results will appear here -->
+                            </div>
+                        </div>
+
+                        <!-- Incumbent Engagement Tool -->
+                        <div class="tool-interface" id="incumbentTool" style="display: none;">
+                            <div class="tool-description">
+                                <h3>Incumbent Engagement Strategy</h3>
+                                <p>Generate strategic messaging and donation strategies for current office holders and their campaigns.</p>
+                            </div>
+                            <div class="incumbent-form">
+                                <div class="form-group">
+                                    <label for="incumbentState">State:</label>
+                                    <select id="incumbentState">
+                                        <option value="">Choose your state...</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="incumbentOfficeLevel">Office Level:</label>
+                                    <select id="incumbentOfficeLevel" onchange="updateIncumbentOfficeTypes()">
+                                        <option value="">Choose office level...</option>
+                                        <option value="federal">Federal</option>
+                                        <option value="state">State</option>
+                                        <option value="local">Local</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="incumbentOfficeType">Current Position:</label>
+                                    <select id="incumbentOfficeType">
+                                        <option value="">Choose position...</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="incumbentDistrict">District:</label>
+                                    <select id="incumbentDistrict">
+                                        <option value="">Choose district...</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="incumbentGoals">Primary Goals:</label>
+                                    <select id="incumbentGoals">
+                                        <option value="">Select primary goals...</option>
+                                        <option value="re-election">Re-election Campaign</option>
+                                        <option value="constituent_engagement">Constituent Engagement</option>
+                                        <option value="policy_advocacy">Policy Advocacy</option>
+                                        <option value="fundraising">Fundraising</option>
+                                        <option value="coalition_building">Coalition Building</option>
+                                    </select>
+                                </div>
+                                <button class="generate-incumbent-strategy" onclick="generateIncumbentStrategy()">
+                                    <i class="fas fa-user-tie"></i>
+                                    Generate Incumbent Strategy
+                                </button>
+                            </div>
+                            <div class="incumbent-results" id="incumbentResults">
+                                <!-- Results will appear here -->
+                            </div>
+                        </div>
+
+                        <!-- Organization Strategy Tool -->
+                        <div class="tool-interface" id="organizationTool" style="display: none;">
+                            <div class="tool-description">
+                                <h3>Organization Strategy</h3>
+                                <p>Create outreach and partnership strategies for organizations and advocacy groups.</p>
+                            </div>
+                            <div class="organization-form">
+                                <div class="form-group">
+                                    <label for="orgName">Organization Name:</label>
+                                    <input type="text" id="orgName" placeholder="Enter organization name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="orgType">Organization Type:</label>
+                                    <select id="orgType">
+                                        <option value="">Choose organization type...</option>
+                                        <option value="advocacy">Advocacy Group</option>
+                                        <option value="nonprofit">Non-Profit</option>
+                                        <option value="union">Labor Union</option>
+                                        <option value="business">Business Association</option>
+                                        <option value="faith">Faith-Based Organization</option>
+                                        <option value="community">Community Organization</option>
+                                        <option value="environmental">Environmental Group</option>
+                                        <option value="education">Education Organization</option>
+                                        <option value="healthcare">Healthcare Organization</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="orgState">Primary State:</label>
+                                    <select id="orgState">
+                                        <option value="">Choose your state...</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="orgFocus">Primary Focus Areas:</label>
+                                    <textarea id="orgFocus" placeholder="Describe your organization's main focus areas and goals..."></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="orgTarget">Target Audience:</label>
+                                    <textarea id="orgTarget" placeholder="Describe your target audience and stakeholders..."></textarea>
+                                </div>
+                                <button class="generate-org-strategy" onclick="generateOrganizationStrategy()">
+                                    <i class="fas fa-building"></i>
+                                    Generate Organization Strategy
+                                </button>
+                            </div>
+                            <div class="organization-results" id="organizationResults">
+                                <!-- Results will appear here -->
+                            </div>
+                        </div>
+
+                        <!-- Other tool interfaces will be added here -->
+                    </section>
+
+            <!-- Feedback Section -->
+            <section class="feedback-section" id="feedbackSection" style="display: none;">
+                <div class="feedback-container">
+                    <h3>How was your experience?</h3>
+                    <p>Your feedback helps us improve the Campaign Intelligence Platform.</p>
+                    
+                    <div class="rating-container">
+                        <div class="stars">
+                            <i class="far fa-star" data-rating="1"></i>
+                            <i class="far fa-star" data-rating="2"></i>
+                            <i class="far fa-star" data-rating="3"></i>
+                            <i class="far fa-star" data-rating="4"></i>
+                            <i class="far fa-star" data-rating="5"></i>
+                        </div>
+                        <p class="rating-text">Click to rate your experience</p>
+                    </div>
+
+                    <div class="feedback-form">
+                        <textarea id="feedbackComment" placeholder="What worked? What could be better? (Optional)"></textarea>
+                        
+                        <div class="email-option">
+                            <label>
+                                <input type="checkbox" id="wantResponse">
+                                Want a response? Leave your email below
+                            </label>
+                            <input type="email" id="feedbackEmail" placeholder="your@email.com" style="display: none;">
+                        </div>
+
+                        <button class="submit-feedback" onclick="submitFeedback()">
+                            <i class="fas fa-paper-plane"></i>
+                            Submit Feedback
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                                       <div class="footer-brand">
+                           <div class="logo">
+                               <div class="logo-icon">
+                                   <div class="microphone-icon">
+                                       <i class="fas fa-microphone"></i>
+                                   </div>
+                               </div>
+                               <div class="logo-text">
+                                   <span class="hope">H.O.P.E.</span>
+                                   <span class="toolkit">TOOLKIT 2.0</span>
+                                   <span class="powered-by">Powered by Project Midlands</span>
+                               </div>
+                           </div>
+                           <p>Campaign Intelligence Platform. Built for the future.</p>
+                       </div>
+                <div class="footer-links">
+                    <a href="https://projectmidlands.com">Project Midlands</a>
+                    <span class="separator">•</span>
+                    <span>Beta Access - Ends January 31, 2026</span>
+                    <span class="separator">•</span>
+                    <a href="#" onclick="showIPNotice()">IP Protection</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- IP Protection Modal -->
+    <div class="modal" id="ipModal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Intellectual Property Protection</h3>
+                <button class="close-modal" onclick="closeIPModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="ip-notice">
+                    <p><strong>© 2025 Project Midlands™. All rights reserved.</strong></p>
+                    <p>Project Midlands™, HOPE Toolkit™, and associated intellectual property, including frameworks, methodologies, digital tools, and related materials, are protected under applicable copyright and trademark laws.</p>
+                    <p>Unauthorized use, duplication, distribution, reproduction, or modification of these materials without explicit written consent from Project Midlands is strictly prohibited.</p>
+                    <p>This content, including but not limited to AI-driven prompts, strategic frameworks, methodologies, branding elements, and associated materials, is the exclusive property of Project Midlands™.</p>
+                    <p><strong>For inquiries regarding licensing, partnerships, or permissions, please contact:</strong></p>
+                    <p>Rob Pralow<br>
+                    Founder & Lead AI Consultant<br>
+                    Project Midlands™<br>
+                    Email: rob@projectmidlands.com<br>
+                    Website: projectmidlands.com</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="enhancements.js"></script>
+</body>
+</html> 
