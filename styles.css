@@ -1,0 +1,3 @@
+/* Placeholder stylesheet for HOPE Toolkit 2.0 */
+body { font-family: 'Poppins', 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; }
+button.is-pressed { transform: translateY(1px); filter: brightness(0.95); }
