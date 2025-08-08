@@ -1,0 +1,293 @@
+/* HOPE Toolkit 2.0 - Campaign Intelligence Platform Styles */
+
+/* ==== RAPID RESPONSE SETUP STYLES ==== */
+.rapid-response-setup {
+    margin-top: 30px;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.rapid-response-setup h5 {
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.rapid-response-setup p {
+    color: #6c757d;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.prompt-inputs {
+    display: grid;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.prompt-inputs .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.prompt-inputs label {
+    font-weight: 500;
+    color: #495057;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.prompt-inputs textarea {
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+    min-height: 80px;
+    transition: border-color 0.2s ease;
+}
+
+.prompt-inputs textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.prompt-preview {
+    margin-top: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+}
+
+.prompt-preview h6 {
+    color: #495057;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.preview-box {
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 4px;
+    border-left: 4px solid #007bff;
+}
+
+.preview-box p {
+    margin: 0;
+    color: #495057;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+/* ==== VOICE STYLE OPTIONS ENHANCEMENT ==== */
+.voice-style-options {
+    display: grid;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.voice-style {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: white;
+}
+
+.voice-style:hover {
+    border-color: #007bff;
+    background: #f8f9ff;
+}
+
+.voice-style input[type="radio"] {
+    margin-right: 15px;
+    transform: scale(1.2);
+}
+
+.voice-style input[type="radio"]:checked + .style-content {
+    color: #007bff;
+}
+
+.style-content h5 {
+    margin: 0 0 5px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.style-content p {
+    margin: 0;
+    font-size: 14px;
+    color: #6c757d;
+    line-height: 1.4;
+}
+
+/* ==== GENERAL FORM STYLES ==== */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #495057;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+/* ==== BUTTON STYLES ==== */
+.save-voice-style {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.save-voice-style:hover {
+    background: linear-gradient(135deg, #0056b3, #004085);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+}
+
+.save-voice-style i {
+    font-size: 18px;
+}
+
+/* ==== VOICE OPTIONS STYLES ==== */
+.voice-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.voice-option {
+    padding: 25px;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: white;
+    text-align: center;
+}
+
+.voice-option:hover {
+    border-color: #007bff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 123, 255, 0.15);
+}
+
+.voice-option.active {
+    border-color: #007bff;
+    background: linear-gradient(135deg, #f8f9ff, #e3f2fd);
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+}
+
+.voice-option i {
+    font-size: 32px;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.voice-option h4 {
+    margin: 0 0 10px 0;
+    color: #2c3e50;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.voice-option p {
+    margin: 0;
+    color: #6c757d;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* ==== RESPONSIVE DESIGN ==== */
+@media (max-width: 768px) {
+    .voice-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .voice-style-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .prompt-inputs {
+        grid-template-columns: 1fr;
+    }
+    
+    .save-voice-style {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* ==== ANIMATION EFFECTS ==== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.voice-inputs {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.prompt-inputs .form-group {
+    animation: fadeIn 0.3s ease-out;
+    animation-delay: calc(var(--animation-order) * 0.1s);
+}
+
+/* ==== ACCESSIBILITY ==== */
+.voice-style:focus-within {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}
+
+.prompt-inputs textarea:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+}

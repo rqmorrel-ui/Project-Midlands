@@ -188,8 +188,14 @@ function selectVoiceType(type, event) {
         const voiceOptions = document.querySelectorAll('.voice-option');
         voiceOptions.forEach(option => option.classList.remove('active'));
         
-        if (event && event.target) {
-            event.target.classList.add('active');
+        // Find the actual voice-option element (handle clicks on nested elements)
+        let targetElement = event && event.target;
+        while (targetElement && !targetElement.classList.contains('voice-option')) {
+            targetElement = targetElement.parentElement;
+        }
+        
+        if (targetElement) {
+            targetElement.classList.add('active');
         }
         
         const customVoiceInputs = safeGetElement('customVoiceInputs');
@@ -250,21 +256,99 @@ function analyzeVoiceProfile() {
 function saveStandardVoice() {
     try {
         alertTrigger('saveStandardVoice');
-        const activeVoiceOption = document.querySelector('.voice-option.active');
+        const selectedStyle = document.querySelector('input[name="voiceStyle"]:checked');
         
-        if (!activeVoiceOption) {
-            console.error('[HOPE Toolkit]: No active voice option found');
+        if (!selectedStyle) {
+            alert('Please select a communication style first.');
             return;
         }
         
-        const selectedVoice = activeVoiceOption.textContent.trim();
+        const styleValue = selectedStyle.value;
+        const styleLabels = {
+            'grassroots': 'Grassroots Organizer',
+            'policy': 'Policy Expert', 
+            'fighter': 'Principled Fighter'
+        };
+        
+        const selectedVoice = styleLabels[styleValue] || styleValue;
         console.log(`💾 Saving standard voice: ${selectedVoice}`);
         
+        // Collect rapid response prompts
+        const attackResponse = safeGetElement('attackResponse')?.value || '';
+        const policyQuestion = safeGetElement('policyQuestion')?.value || '';
+        const supportRequest = safeGetElement('supportRequest')?.value || '';
+        const criticismResponse = safeGetElement('criticismResponse')?.value || '';
+        
+        // Store the prompts for later use
+        window.rapidResponsePrompts = {
+            style: selectedVoice,
+            attack: attackResponse,
+            policy: policyQuestion,
+            support: supportRequest,
+            criticism: criticismResponse
+        };
+        
+        console.log('📝 Rapid response prompts saved:', window.rapidResponsePrompts);
+        
+        // Show success and proceed to next step
         safeSetElement('voiceSummary', 'innerText', 
-            `Voice profile saved: ${selectedVoice}`);
+            `Voice profile saved: ${selectedVoice} with rapid response prompts`);
+        
+        // Automatically proceed to step 2.5 after saving
+        setTimeout(() => {
+            safeSetElement('step2_5', 'style.display', 'block');
+            logStep('Standard voice saved and proceeding to communication options');
+        }, 1000);
+        
         logStep('Standard voice saved');
     } catch (error) {
         console.error('[HOPE Toolkit]: Error in saveStandardVoice:', error);
+    }
+}
+
+// New function to preview voice style
+function previewVoiceStyle() {
+    try {
+        const selectedStyle = document.querySelector('input[name="voiceStyle"]:checked');
+        const previewBox = safeGetElement('voicePreview');
+        
+        if (!selectedStyle || !previewBox) {
+            return;
+        }
+        
+        const styleValue = selectedStyle.value;
+        const styleLabels = {
+            'grassroots': 'Grassroots Organizer',
+            'policy': 'Policy Expert', 
+            'fighter': 'Principled Fighter'
+        };
+        
+        const selectedVoice = styleLabels[styleValue] || styleValue;
+        
+        // Generate a sample response based on the selected style
+        let sampleResponse = '';
+        switch (styleValue) {
+            case 'grassroots':
+                sampleResponse = "As someone who's lived in this community for years, I understand the real challenges we face. Let's work together to build a stronger future for our families.";
+                break;
+            case 'policy':
+                sampleResponse = "Based on the data and research, this policy approach will deliver measurable results for our community. Here's the evidence and implementation plan.";
+                break;
+            case 'fighter':
+                sampleResponse = "We won't back down from fighting for what's right. The people deserve better, and I'm committed to standing up for justice and accountability.";
+                break;
+            default:
+                sampleResponse = "This is how your responses will sound in the selected voice style.";
+        }
+        
+        previewBox.innerHTML = `
+            <p><strong>${selectedVoice} Style:</strong></p>
+            <p><em>"${sampleResponse}"</em></p>
+        `;
+        
+        logStep(`Voice preview updated for ${selectedVoice} style`);
+    } catch (error) {
+        console.error('[HOPE Toolkit]: Error in previewVoiceStyle:', error);
     }
 }
 
@@ -412,15 +496,36 @@ function analyzeComment() {
         console.log(`⚔️ Analyzing comment: ${comment}`);
         console.log(`👤 Context: ${context}`);
         
+        // Use saved rapid response prompts if available
+        let recommendedResponse = '';
+        if (window.rapidResponsePrompts) {
+            // Simple keyword matching to select appropriate response
+            const commentLower = comment.toLowerCase();
+            if (commentLower.includes('attack') || commentLower.includes('lie') || commentLower.includes('fake')) {
+                recommendedResponse = window.rapidResponsePrompts.attack || "Facts don't care about disinformation. Let's focus on the real issues affecting our community.";
+            } else if (commentLower.includes('policy') || commentLower.includes('plan') || commentLower.includes('how')) {
+                recommendedResponse = window.rapidResponsePrompts.policy || "Great question. Here's what I believe and why it matters to our community.";
+            } else if (commentLower.includes('support') || commentLower.includes('help') || commentLower.includes('volunteer')) {
+                recommendedResponse = window.rapidResponsePrompts.support || "Thank you for your support. Together, we can make real change happen.";
+            } else if (commentLower.includes('criticism') || commentLower.includes('disagree') || commentLower.includes('wrong')) {
+                recommendedResponse = window.rapidResponsePrompts.criticism || "I appreciate your perspective. Let's work together to find solutions.";
+            } else {
+                recommendedResponse = "Thank you for your comment. I'm committed to addressing the real issues that matter to our community.";
+            }
+        } else {
+            recommendedResponse = "Facts don't care about disinformation. Let's focus on the real issues affecting our community. ${context} is committed to transparency and truth.";
+        }
+        
         // Simulate analysis
         setTimeout(() => {
             const response = `
                 <div class="response-analysis">
                     <h4>EchoShield™ Analysis</h4>
                     <p><strong>Comment Type:</strong> Opposition Attack</p>
+                    <p><strong>Voice Style:</strong> ${window.rapidResponsePrompts?.style || 'Default'}</p>
                     <p><strong>Recommended Response:</strong></p>
                     <div class="recommended-response">
-                        <p>"Facts don't care about disinformation. Let's focus on the real issues affecting our community. ${context} is committed to transparency and truth."</p>
+                        <p>"${recommendedResponse}"</p>
                     </div>
                     <p><strong>Response Strategy:</strong> Fact-based, calm, redirect to issues</p>
                     <p><strong>Confidence:</strong> 89%</p>
@@ -432,7 +537,7 @@ function analyzeComment() {
                 rapidResponseResults.innerHTML = response;
             }
             
-            logStep('Comment analyzed');
+            logStep('Comment analyzed with custom rapid response prompts');
         }, 1500);
     } catch (error) {
         console.error('[HOPE Toolkit]: Error in analyzeComment:', error);
@@ -580,6 +685,18 @@ document.addEventListener('DOMContentLoaded', () => {
         if (aiToneDisplay) {
             aiToneDisplay.style.display = 'none';
         }
+        
+        // Set up voice style radio button listeners for preview
+        const voiceStyleRadios = document.querySelectorAll('input[name="voiceStyle"]');
+        voiceStyleRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                try {
+                    previewVoiceStyle();
+                } catch (error) {
+                    console.error('[HOPE Toolkit]: Error in voice style preview:', error);
+                }
+            });
+        });
         
         // Set up star rating functionality
         const stars = document.querySelectorAll('.stars i');

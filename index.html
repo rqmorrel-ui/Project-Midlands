@@ -348,7 +348,7 @@
                                 <div class="voice-inputs" id="standardVoiceInputs" style="display: none;">
                                     <div class="standard-voice-setup">
                                         <h4>VoiceShield AI™ Setup</h4>
-                                        <p>Select your preferred communication style:</p>
+                                        <p>Select your preferred communication style and set up rapid response prompts:</p>
                                         
                                         <div class="voice-style-options">
                                             <label class="voice-style">
@@ -372,6 +372,41 @@
                                                     <p>Passionate, bold, justice-focused</p>
                                                 </div>
                                             </label>
+                                        </div>
+                                        
+                                        <!-- Rapid Response Prompt Setup -->
+                                        <div class="rapid-response-setup">
+                                            <h5>Rapid Response Prompts</h5>
+                                            <p>Set up quick response templates for common situations:</p>
+                                            
+                                            <div class="prompt-inputs">
+                                                <div class="form-group">
+                                                    <label for="attackResponse">Attack Response Template:</label>
+                                                    <textarea id="attackResponse" placeholder="e.g., 'Facts don't care about disinformation. Let's focus on the real issues affecting our community.'" rows="3"></textarea>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label for="policyQuestion">Policy Question Response:</label>
+                                                    <textarea id="policyQuestion" placeholder="e.g., 'Great question. Here's what I believe and why it matters to our community...'" rows="3"></textarea>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label for="supportRequest">Support Request Response:</label>
+                                                    <textarea id="supportRequest" placeholder="e.g., 'Thank you for your support. Together, we can make real change happen.'" rows="3"></textarea>
+                                                </div>
+                                                
+                                                <div class="form-group">
+                                                    <label for="criticismResponse">Constructive Criticism Response:</label>
+                                                    <textarea id="criticismResponse" placeholder="e.g., 'I appreciate your perspective. Let's work together to find solutions.'" rows="3"></textarea>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="prompt-preview">
+                                                <h6>Preview Your Voice:</h6>
+                                                <div id="voicePreview" class="preview-box">
+                                                    <p><em>Your responses will be generated in the selected voice style...</em></p>
+                                                </div>
+                                            </div>
                                         </div>
                                         
                                         <button class="save-voice-style" onclick="saveStandardVoice()">
